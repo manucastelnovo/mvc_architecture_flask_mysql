@@ -1,0 +1,54 @@
+CREATE SCHEMA `holamundo` ;
+
+use holamundo;
+
+
+CREATE TABLE `holamundo`.`users` (
+  `id` INT NOT NULL,
+  `firstname` VARCHAR(45) NULL,
+  `lastname` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+ALTER TABLE `holamundo`.`users` 
+CHANGE COLUMN `id` `id` INT NOT NULL AUTO_INCREMENT ;
+
+
+CREATE TABLE `holamundo`.`cars` (
+  `id` INT NOT NULL,
+  `model` VARCHAR(45) NULL,
+  `year` VARCHAR(45) NULL,
+  `seller` VARCHAR(45) NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `holamundo`.`users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+ALTER TABLE `holamundo`.`cars` 
+CHANGE COLUMN `id` `id` INT NOT NULL AUTO_INCREMENT ;
+
+
+ALTER TABLE `holamundo`.`cars` 
+ADD COLUMN `description` VARCHAR(150) NOT NULL AFTER `user_id`;
+
+ALTER TABLE `holamundo`.`cars` 
+ADD COLUMN `price` VARCHAR(45) NULL AFTER `description`,
+ADD COLUMN `make` VARCHAR(45) NULL AFTER `price`;
+
+
+ALTER TABLE `holamundo`.`users` 
+CHANGE COLUMN `password` `password` VARCHAR(250) NULL DEFAULT NULL ;
+
+
+
+
+
+
+
+

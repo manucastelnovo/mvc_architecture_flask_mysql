@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="p-[100px]">
+
+
+    <div class="flex justify-between mb-8">
+      <div>
+      
+      </div>
+      
+      <div class=" w-[80px]">
+        <a  class="m-5 w-[50px]" href="{{ url_for('logout')}}">loguot</a>
+        <div class="h-8"></div>
+        <a  class="m-5 w-[50px]" href="{{ url_for('dashboard')}}">Home</a>
+      </div>
+      </div>
+      
+    <div>
+      <div>
+
+        <section class="flex flex-row justify-between">
+        
+        <form action="" method="POST">
+          <div class="flex flex-col">
+
+            <div class="mb-8">
+              Registro
+            </div>
+            <h2>Firstname</h2>
+            <div class="border border-solid mb-8">
+              
+              {{ formRegister.hidden_tag() }} {{ formRegister.firstname() }}  
+            </div>
+            <h2>Lastname</h2>
+            <div class="border border-solid mb-8">
+              
+             {{ formRegister.lastname() }}  
+            </div>
+            <h2>email</h2>
+            <div class="border border-solid mb-8">
+              {{ formRegister.email() }} 
+            </div>
+            <h2>password</h2>
+            <div class="border border-solid mb-8">
+              {{ formRegister.password() }}
+            </div>
+            <h2>password</h2>
+            <div class="border border-solid mb-8">
+              {{ formRegister.password2() }}
+            </div>
+            <div class="border border-black text-center">
+              {{formRegister.submit() }}
+
+            </div>
+            
+          </div>
+          
+
+        </form>
+
+
+
+        <form action="" method="POST">
+          <div class="flex flex-col">
+
+            <div class="mb-8">
+              Login
+            </div>
+            
+            <h2>email</h2>
+            <div class="border border-solid mb-8">
+              {{ formLogin.hidden_tag() }}  {{ formLogin.email() }} 
+            </div>
+            <h2>password</h2>
+            <div class="border border-solid mb-8">
+              {{ formLogin.password() }}
+            </div>
+
+            <div class="border border-black text-center">
+              {{formLogin.submit() }}
+
+            </div>
+            
+          </div>
+          
+
+        </form>
+      </section>
+      </div>
+      
+
+    </div>
+    
+    
+
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Car Form</title>
+</head>
+<body>
+    <div class="flex justify-between mb-8 p-8">
+        <div>
+        
+        </div>
+        
+        <div class=" w-[80px]">
+          <a  class="m-5 w-[50px]" href="{{ url_for('logout')}}">loguot</a>
+          <div class="h-8"></div>
+          <a  class="m-5 w-[50px]" href="{{ url_for('dashboard')}}">Home</a>
+        </div>
+    </div>
+    <div class="flex justify-center h-[60vh] items-center">
+        
+
+    
+    <div  class="border border-black w-[40vw] p-8 m-8">
+    <form action="" method="POST" class="flex flex-col justify-center">
+
+
+        {{ form.hidden_tag()}}
+        <p class="text-center mb-2">price</p>
+        {{ form.price(class="border border-black") }}
+        <br>
+        <p class="text-center mb-2">model</p>
+        {{ form.model(class="border border-black") }}
+        <br>
+        <p class="text-center mb-2">make</p>
+        {{ form.make(class="border border-black") }}
+        <br>
+        <p class="text-center mb-2">year</p>
+        {{ form.year(class="border border-black") }}
+        <p class="text-center mb-2">description</p>
+        
+        {{ form.description(class="border border-black h-12 mb-6") }}
+        <br>
+        <br>
+        {{ form.submit(style="border:solid; border-color:black") }}
+        
+    </form>
+    </div>
+</div>
+</body>
+</html>

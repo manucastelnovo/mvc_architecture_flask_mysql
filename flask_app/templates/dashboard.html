@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="p-[100px]">
+    <div class="flex justify-between mb-8">
+<div>
+
+</div>
+
+<div class=" w-[80px]">
+  <a  class="m-5 w-[50px]" href="{{ url_for('logout')}}">loguot</a>
+  <div class="h-8"></div>
+  <a  class="m-5 w-[50px]" href="{{ url_for('dashboard')}}">Home</a>
+</div>
+</div>
+
+
+
+    <div>
+      <div>
+
+        <section class="flex flex-col justify-between">
+        
+        <div>
+         <h1 class="pb-8"> Welcome to car Dealz {{ name}} {{ current_user.id }} </h1>
+         
+         
+         <table style="border: solid; border-color: black; width: 60vw;">
+          <thead>
+            <tr style="border: solid; border-color: black;">
+              <th class="pr-12">Name</th>
+              <th class="pr-12">Year</th>
+              <th class="pr-12">Seller</th>
+              <th class="pr-18">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in list_of_cars %}
+              <tr style="border: solid; border-color: black;">
+                
+                <td class="pr-12 text-center"><a href="{{ url_for('detail_page', car_id=item['id'])}}">{{item['model']}}</a></td>
+                <td class="pr-12 text-center">{{ item['year']}}</td>
+                <td class="pr-12 text-center">{{ item['seller']}}</td>
+                <td class="m-8 text-center">
+                  <div class="m-8">
+                    {% if not item['user_id'] == current_user.id %}
+                      <p><a href="{{ url_for('detail_page', car_id=item['id'])}}">view</a></p>
+                    {% else %}
+                    <a  class="m-5" href="{{ url_for('edit_page', car_id=item['id'])}}">editar    </a>
+                    <a href="{{ url_for('delete', car_id=item['id'])}}">eliminar</a>
+                    {% endif %}
+
+                  </div>
+                  
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+       <div class="my-6 w-[60vw] flex justify-between">
+        <div>
+
+        </div>
+         <a class="w-[200px] p-4 border border-black text-center box-shadow" href="{{url_for('addCar')}}">add car</a>
+
+       </div>
+          
+      </section>
+     
+     
+      </div>
+      
+
+    </div>
+    
+    
+
+  </body>
+</html>
